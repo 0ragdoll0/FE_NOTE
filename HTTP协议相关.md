@@ -43,7 +43,8 @@ TCP连接默认不关闭，进行复用，当客户端和服务器端发现对�
 Head-of-line blocking：前面回应速度影响队列中后面的回应
 
 # HTTP/2
-以下均为相对于HTTP/1.1改进部分：
+**HTTP/2 协议只有在 HTTPS 环境才会生效**   
+> 以下均为相对于HTTP/1.1改进部分：
 ## 二进制协议
 信息头和数据内容均为二进制
 
@@ -64,3 +65,29 @@ HTTP 协议不带有状态，每次请求都必须附上所有信息。有一些
 ## 服务器推送
 服务器未经请求，主动向客户端发送资源
 
+# 常见状态码
+[状态码详解](http://www.cnblogs.com/TankXiao/archive/2013/01/08/2818542.html#code206)
+## 2XX成功
+请求已成功被服务器接收、理解、并接受
+* 200 OK:服务器成功处理了请求
+* 204 Not Content：Response中包含一些Header和一个状态行， 但不包括实体的主题内容（没有response body）
+
+## 3XX重定向状态
+告诉浏览器客户端，它们访问的资源已被移动， Web服务器发送一个重定向状态码和一个可选的Location Header, 告诉客户端新的资源地址在哪。
+浏览器客户端会自动用Location中提供的地址，重新发送新的Request。
+* 301 Moved Permanently:永久移除（SEO中会将返回的Location Header当做唯一有效目标）
+* 302 Found：临时移除
+* 304 Not Modified：客户的缓存资源是最新的， 要客户端使用缓存
+
+## 4XX客户端错误状态
+客户端发送了一些服务器无法处理的东西，比如格式错误的Request, 或者最常见的是， 请求一个不存在的URL。
+* 400 Bad Request：请求错误
+* 401 Unauthorized：缺少客户端认证
+* 403 Forbidden：请求被服务器拒绝
+* 404 Not Found：未找到资源
+
+## 5XX服务器端错误状态
+* 500 Internal Server Error:内部服务器错误
+* 501 Not Implement:客户端发起的请求超出服务器的能力范围(比如，使用了服务器不支持的请求方法)
+* 502 Bad Gateway:代理使用的服务器遇到了上游的无效响应
+* 503 Service Unavailable:服务器目前无法为请求提供服务，但过一段时间就可以恢复服务
