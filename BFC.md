@@ -5,7 +5,7 @@
 > 1. 设置float属性    
 > 2. 设置position不为static/relative    
 > 3. 设置display为：table-cell,table-caption,inline-block,flex,or inline-flex
-> 4. 设置overflow属性不为visible（可设置为hidden等）-->较优
+> 4. 设置overflow属性不为visible（可设置为hidden等）-->较优(但期望内容不被hidden时可设置display:table-cell)
 * 使用
 > 1. 消除Margin Collapse      
 >    原理：只有当元素在同一个BFC中时，垂直方向上的margin才会clollpase.如果它们属于不同的BFC，则不会有margin collapse.    
